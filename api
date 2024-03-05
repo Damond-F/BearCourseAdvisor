@@ -1,3 +1,11 @@
 import requests
+import ratemyprofessor
 
-r = 
+
+#Ratemyprofessor API doens't have many methods, doesn't have course from the comments or anything like that 
+berkeley = ratemyprofessor.get_school_by_name("University of California, Berkeley")
+
+ranade = ratemyprofessor.get_professor_by_school_and_name(berkeley, "Gireeja Ranade") 
+print(ranade)
+
+print(ranade.num_ratings)
