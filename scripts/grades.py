@@ -53,5 +53,8 @@ def get_grade_distribution(request):
     dict_grades["f"] = f
     dict_grades["P"] = p
     dict_grades["NP"] = np
+    dict_grades["course_gpa"] = course_gpa
+    dict_grades["average_letter_grade"] = average_letter_grade
+    dict_grades["course_name"] = course_name
 
     return dict_grades
