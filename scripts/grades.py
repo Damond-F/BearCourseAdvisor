@@ -1,4 +1,11 @@
 import requests
+import pymongo
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+mongoConnection = os.getenv('MONGO_CONNECTION')
+client = pymongo.MongoClient(mongoConnection)
 
 def send_api_request(url):
     new_url = url
