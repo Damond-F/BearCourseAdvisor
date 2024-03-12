@@ -3,13 +3,23 @@ import requests
 def send_api_request(url):
     new_url = url
 
-    response = requests.get(new_url)
-
-    if response.status.code == 200:
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # Raise an error for bad response status
+        data = response.json()
+        # Process the JSON data here
+    except requests.exceptions.HTTPError as http_err:
+        print(f'HTTP error occurred: {http_err}')
+    except requests.exceptions.JSONDecodeError as json_err:
+        print(f'JSON decoding error occurred: {json_err}')
+    except Exception as err:
+        print(f'An error occurred: {err}')
+    
+    if response.status_code == 200:
         response_json = response.json()
         return response_json
     else:
-        print ("API request failed with status code:", response.status_code)
+        print("API request failed with status codee:", response.status_code)
         return None
 
 def retrieve_request():
@@ -23,9 +33,9 @@ def retrieve_request():
 def get_grade_distribution(request):
     course_gpa = request.get("course_gpa")
     average_letter_grade = request.get("course_letter")
-    course_name = requests.get("title")
+    course_name = request.get("title")
 
-    course_name.split(" ").join(" ")
+    course_name = course_name.replace(" ", "")
 
     a_plus = request.get("A+").get("percent")
     a = request.get("A").get("percent")
@@ -60,3 +70,6 @@ def get_grade_distribution(request):
     dict_grades["Course Name"] = course_name
 
     return dict_grades
+
+test = send_api_request("https://berkeleytime.com/api/grades/sections/431757&431758&437637&434845&424859&430685&427894&420093&419036&423044&413553&412545&411299&407070&406250&404155&401030&399457&386579&387361&381682&380541&357441&416813&384029&363581&380822&373749&349006&380858&381078&354270&375702&381820&371865&371866&370009&370010&366938/")
+print(get_grade_distribution(test))
