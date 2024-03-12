@@ -26,7 +26,7 @@ def send_api_request(url):
         response_json = response.json()
         return response_json
     else:
-        print("API request failed with status codee:", response.status_code)
+        print("API request failed with status code:", response.status_code)
         return None
 
 def retrieve_request():
