@@ -23,7 +23,9 @@ def retrieve_request():
 def get_grade_distribution(request):
     course_gpa = request.get("course_gpa")
     average_letter_grade = request.get("course_letter")
-    course_name = "CS61A"
+    course_name = requests.get("title")
+
+    course_name.split(" ").join(" ")
 
     a_plus = request.get("A+").get("percent")
     a = request.get("A").get("percent")
@@ -53,5 +55,8 @@ def get_grade_distribution(request):
     dict_grades["f"] = f
     dict_grades["P"] = p
     dict_grades["NP"] = np
+    dict_grades["Average Course GPA"] = course_gpa
+    dict_grades["Average Letter Grade"] = average_letter_grade
+    dict_grades["Course Name"] = course_name
 
     return dict_grades
