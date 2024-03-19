@@ -7,6 +7,10 @@ load_dotenv()
 mongoConnection = os.getenv('MONGO_CONNECTION')
 client = pymongo.MongoClient(mongoConnection)
 
+db = client['classes']
+cs = db['cs']
+
+
 def send_api_request(url):
     new_url = url
 
@@ -68,6 +72,17 @@ def get_grade_distribution(request):
 
     return dict_grades
 
+
+
+
 #Test for API Functionality 
-# test = send_api_request("https://berkeleytime.com/api/grades/sections/431757&431758&437637&434845&424859&430685&427894&420093&419036&423044&413553&412545&411299&407070&406250&404155&401030&399457&386579&387361&381682&380541&357441&416813&384029&363581&380822&373749&349006&380858&381078&354270&375702&381820&371865&371866&370009&370010&366938/")
-# print(get_grade_distribution(test))
+test = send_api_request("https://berkeleytime.com/api/grades/sections/431757&431758&437637&434845&424859&430685&427894&420093&419036&423044&413553&412545&411299&407070&406250&404155&401030&399457&386579&387361&381682&380541&357441&416813&384029&363581&380822&373749&349006&380858&381078&354270&375702&381820&371865&371866&370009&370010&366938/")
+dict_grades = get_grade_distribution(test)
+print(dict_grades)
+
+grades = cs.insert_one(dict_grades)
+print(grades)
+
+
+
+client.close()
