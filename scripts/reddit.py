@@ -2,8 +2,8 @@ import praw
 from dotenv import load_dotenv
 import os
 import re
-import pandas as pd
-import time
+import csv
+
 
 def modifyString(course):
     match = re.match(r"COMPSCI(\d+)([a-zA-Z]*)", course, re.I)
@@ -30,17 +30,75 @@ def getCourseData(course):
     subreddit = reddit.subreddit("berkeley")
 
     seen_post_ids = set()
+    course_data = {}
 
     search_queries = modifyString(course)
 
     for query in search_queries:
-        for submission in subreddit.search(query, sort="relevance", limit=25):
+        for submission in subreddit.search(query, sort="relevance", limit=5):
             if submission.id not in seen_post_ids:
                 seen_post_ids.add(submission.id)
-                print(f"Post Title: {submission.title}\nPost URL: {submission.url}\n")
                 
+                # Store the post data
+                post_data = {
+                    "title": submission.title,
+                    "url": submission.url,
+                    "comments": []
+                }
+
+                # Fetching comments
                 submission.comments.replace_more(limit=None)
                 for comment in submission.comments.list():
-                    print(f"\tComment by {comment.author}: {comment.body}\n")
+                    post_data["comments"].append({
+                        "author": str(comment.author),
+                        "body": comment.body
+                    })
 
-getCourseData('COMPSCI61A')
+                course_data[submission.id] = post_data
+
+    '''
+    Structure:
+
+    "submission_id_1": {
+        "title": "Post Title 1",
+        "url": "https://reddit.com/post1",
+        "comments": [
+            {"author": "user1", "body": "Comment text 1"},
+            {"author": "user2", "body": "Comment text 2"},
+            // ... more comments
+        ]
+    },
+    "submission_id_2": {
+        "title": "Post Title 2",
+        "url": "https://reddit.com/post2",
+        "comments": [
+            {"author": "user3", "body": "Comment text 3"},
+            {"author": "user4", "body": "Comment text 4"},
+            // ... more comments
+        ]
+    },
+    '''
+
+
+
+    return course_data
+
+
+def export_to_csv(course_data, filename="course_data.csv"):
+    with open(filename, mode='w', newline='', encoding='utf-8') as file:
+        csv_writer = csv.writer(file)
+
+        # Write the header row
+        csv_writer.writerow(['Post ID', 'Post Title', 'Post URL', 'Comment Author', 'Comment Body'])
+
+        for post_id, post_info in course_data.items():
+            # Write post info once
+            csv_writer.writerow([post_id, post_info['title'], post_info['url']])
+
+            # Write comments for the post
+            for comment in post_info['comments']:
+                csv_writer.writerow([comment['author'], comment['body']])
+
+
+
+export_to_csv(getCourseData('COMPSCI161'))
