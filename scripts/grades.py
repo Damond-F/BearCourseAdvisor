@@ -2,6 +2,7 @@ import requests
 import pymongo
 from dotenv import load_dotenv
 import os
+import json
 
 load_dotenv()
 mongoConnection = os.getenv('MONGO_CONNECTION')
@@ -70,9 +71,8 @@ def get_grade_distribution(request):
     dict_grades["Average Letter Grade"] = average_letter_grade
     dict_grades["Course Name"] = course_name
 
+
     return dict_grades
-
-
 
 
 #Test for API Functionality 
@@ -80,8 +80,8 @@ test = send_api_request("https://berkeleytime.com/api/grades/sections/431757&431
 dict_grades = get_grade_distribution(test)
 print(dict_grades)
 
-grades = cs.insert_one(dict_grades)
-print(grades)
+
+cs.insert_one(dict_grades)
 
 
 
