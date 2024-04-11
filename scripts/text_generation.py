@@ -10,7 +10,7 @@ def query_data(course):
     mongoConnection = os.getenv('MONGO_CONNECTION')
     client = pymongo.MongoClient(mongoConnection)
 
-def generate_text():
+def generate_text(context):
     load_dotenv()
     client = openai.OpenAI(api_key=os.environ.get("OPEN_AI_KEY"))
     MODEL = "gpt-3.5-turbo"
@@ -25,6 +25,7 @@ def generate_text():
         ],
     temperature=0.7,
     max_tokens=1000
+    context = context # This is the context string we will be putting into our model
     )
     print(response.choices[0].message.content)
 generate_text()
