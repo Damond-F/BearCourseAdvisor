@@ -1,8 +1,13 @@
 import praw
 from dotenv import load_dotenv
+import pymongo
 import os
 import re
+import certifi
 import csv
+
+COURSE_LIST = ['COMPSCI10', 'COMPSCI47B', 'COMPSCI61A', 'COMPSCI61B', 'COMPSCI61C', 'COMPSCI70', 'COMPSCI161',
+             'COMPSCI162', 'COMPSCI168', 'COMPSCI184', 'COMPSCI186', 'COMPSCI70', 'COMPSCI182', 'COMPSCI189', 'COMPSCI188', 'COMPSCI191']
 
 
 def modifyString(course):
@@ -35,14 +40,14 @@ def getCourseData(course):
     search_queries = modifyString(course)
 
     for query in search_queries:
-        for submission in subreddit.search(query, sort="relevance", limit=5):
+        for submission in subreddit.search(query, sort="relevance", limit=1):
             if submission.id not in seen_post_ids:
                 seen_post_ids.add(submission.id)
                 
                 # Store the post data
                 post_data = {
                     "title": submission.title,
-                    "url": submission.url,
+                    "reddit_url": submission.url,
                     "comments": []
                 }
 
@@ -84,21 +89,22 @@ def getCourseData(course):
     return course_data
 
 
-def export_to_csv(course_data, filename="course_data.csv"):
-    with open(filename, mode='w', newline='', encoding='utf-8') as file:
-        csv_writer = csv.writer(file)
+def updateDocs(Course_name, reddit_text):
+    load_dotenv()
+    mongoPW = os.getenv('MONGO_PW')
+    client = pymongo.MongoClient(f'mongodb+srv://BearCourseAdivsor:{mongoPW}@cluster0.7jj4shw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', tlsCAFile=certifi.where())
 
-        # Write the header row
-        csv_writer.writerow(['Post ID', 'Post Title', 'Post URL', 'Comment Author', 'Comment Body'])
+    db = client['classes']
+    cs = db['cs']
 
-        for post_id, post_info in course_data.items():
-            # Write post info once
-            csv_writer.writerow([post_id, post_info['title'], post_info['url']])
-
-            # Write comments for the post
-            for comment in post_info['comments']:
-                csv_writer.writerow([comment['author'], comment['body']])
+    cs.update_one(
+        { "Course Name": Course_name},
+        { "$set": {'reddit text': reddit_text}}
+    )
 
 
 
-export_to_csv(getCourseData('COMPSCI161'))
+
+print(getCourseData('COMPSCI61A'))
+
+updateDocs('COMPSCI61A', getCourseData('COMPSCI61A'))
