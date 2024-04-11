@@ -4,7 +4,6 @@ import pymongo
 import csv
 import os
 
-
 def query_data(course):
     load_dotenv()
     mongoConnection = os.getenv('MONGO_CONNECTION')
