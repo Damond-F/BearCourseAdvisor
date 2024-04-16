@@ -21,6 +21,8 @@ def importProfessorRatings(professor):
     mongoConnection = os.getenv('MONGO_CONNECTION')
     client = pymongo.MongoClient(mongoConnection)
 
+    
+
 
 
     # return {
