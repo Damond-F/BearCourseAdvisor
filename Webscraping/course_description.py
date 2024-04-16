@@ -82,8 +82,21 @@ keys_to_keep = [
     "COMPSCI186", "COMPSCI182", "COMPSCI189", "COMPSCI188", "COMPSCI191"
 ]
 
+
 filtered_course_info = {k: course_info[k] for k in keys_to_keep if k in course_info}
 #print(filtered_course_info) #This is dictinary - (Key = Course Code, Value = Course Description)
+
+def clean_descriptions(courses):
+    updated_course_descriptions = courses.copy()
+
+    for course, description in updated_course_descriptions.items():
+        # Split the description at the newline character and take the first part
+        updated_course_descriptions[course] = description.split('\n')[:2]
+    
+    return updated_course_descriptions
+
+filtered_course_info = clean_descriptions(filtered_course_info)
+#print(filtered_course_info.items())
 
 def import_to_db(courses):
     load_dotenv()
@@ -96,7 +109,7 @@ def import_to_db(courses):
         # Assume that the 'course_code' is a unique identifier for the courses in the collection.
         # The update is made to a new field called 'description'.
         cs.update_one(
-            {"course_code": course_code}, 
+            {"Course Name": course_code}, 
             {"$set": {"description": course_description}}
         )
 
