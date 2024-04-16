@@ -9,7 +9,7 @@ def query_data(course):
     mongoConnection = os.getenv('MONGO_CONNECTION')
     client = pymongo.MongoClient(mongoConnection)
 
-def generate_text(context): # may change what type context is (List of Strings) or just string
+def generate_text(): # may change what type context is (List of Strings) or just string
     load_dotenv()
     client = openai.OpenAI(api_key=os.environ.get("OPEN_AI_KEY"))
     MODEL = "gpt-3.5-turbo"
@@ -17,14 +17,12 @@ def generate_text(context): # may change what type context is (List of Strings) 
     response = client.chat.completions.create(
     model=MODEL,
     messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "Knock knock."},
-        {"role": "assistant", "content": "Who's there?"},
-        {"role": "user", "content": "Orange."},
+        {"role": "system", "content": "You are a friendly and helpful assistant. You should be give as much advice as possible, but prioritize specific tips"},
+        {"role": "user", "content": "How should I prepare for CS61A if I want to get an A?"}
         ],
     temperature=0.7,
     max_tokens=1000
-    context = context # This is the context string we will be putting into our model
+    # context = context # This is the context string we will be putting into our model
     )
     print(response.choices[0].message.content)
 generate_text()
