@@ -12,6 +12,14 @@ client = pymongo.MongoClient(f'mongodb+srv://BearCourseAdivsor:{mongoPW}@cluster
 db = client['classes']
 cs = db['cs']
 
-cs.insert_one({
-    
-})
+
+medium = '''
+Introduction to Database Systems is a solid class to take — it has a manageable workload, fair exams, and is very useful for systems design interviews. No matter what you decide to do in computer science, it’s good to know how a database system works. One thing to note is that the CS W186 version of this class is run completely online, but online lectures are set up in an easily digestible format.
+'''
+
+Course_name = 'COMPSCI186'
+
+cs.update_one(
+        { "Course Name": Course_name},
+        { "$set": {'more more info': medium}}
+    )
