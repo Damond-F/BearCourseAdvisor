@@ -2,20 +2,21 @@ import openai
 from dotenv import load_dotenv
 import pymongo
 import csv
+import certifi
 import os
 
 def query_data(course_name):
     load_dotenv()
-    mongoConnection = os.getenv('MONGO_CONNECTION')
-    client = pymongo.MongoClient(mongoConnection)
+    mongoPW = os.getenv('MONGO_PW')
+    client = pymongo.MongoClient(f'mongodb+srv://BearCourseAdivsor:{mongoPW}@cluster0.7jj4shw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', tlsCAFile=certifi.where())
 
     db = client['classes']
     cs = db['cs']
-    courseCursor = cs.find()
+    courseCursor = cs.find_one()
 
 
-    course = courseCursor
-    print(course)
+    
+    print(courseCursor)
     
 
 query_data('COMPSCI10')
