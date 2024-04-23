@@ -16,9 +16,9 @@ function CoursePage({ match }) {
 function App() {
   return (
     <Router>
-      <div>
-        <h1>Choose a Course</h1>
-        <div className="buttonContainer">
+      <div className="container">
+        <h1 className="header">Choose a course</h1> {/* Header */}
+        <div className="button-container">
           <Link to="/COMPSCI10"><button>CS10</button></Link>
           <Link to="/COMPSCI61A"><button>CS61A</button></Link>
           <Link to="/COMPSCI61B"><button>CS61B</button></Link>
