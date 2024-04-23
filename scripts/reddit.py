@@ -118,12 +118,12 @@ def export_to_csv(course_data, filename="course_data.csv"):
                 csv_writer.writerow([comment['author'], comment['body']])
 
 
-search_term = 'COMPSCI47B'
+search_term = 'COMPSCI61A'
 
 
 print(getCourseData(search_term))
 
 # export_to_csv(getCourseData(search_term))
 
-# updateDocs(search_term, getCourseData(search_term))
+updateDocs(search_term, getCourseData(search_term))
 
