@@ -18,7 +18,6 @@ function CoursePage({ match }) {
 }
 
 function App() {
-  const { currentCourseCode } =  CoursePage
   return (
     <Router>
       <div className="container">

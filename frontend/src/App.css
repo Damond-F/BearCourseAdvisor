@@ -94,3 +94,20 @@
   display: grid;
   
 }
+
+.comment-box {
+  list-style: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+}
+
+.comment-item {
+  background-color: #f9f9f9; /* Light gray background */
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 8px 12px; /* Some padding inside the box */
+  margin-bottom: 10px; /* Space between comments */
+  max-width: 600px; /* Set a max-width for comment box and center it */
+  margin-left: auto;
+  margin-right: auto;
+  word-wrap: break-word; /* Ensure long words do not break the layout */
+}
