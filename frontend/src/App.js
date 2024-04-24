@@ -3,6 +3,21 @@ import { BrowserRouter as Router, Routes, Route, Link, useParams, Navigate } fro
 import './App.css';
 import ChatBot from './components/chatBot'
 import Comments from './components/comments';
+import CS10 from './components/routingComponents/CS10'
+import CS61A from './components/routingComponents/CS61A'
+import CS47B from './components/routingComponents/CS47B'
+import CS61B from './components/routingComponents/CS61B'
+import CS61C from './components/routingComponents/CS61C'
+import CS70 from './components/routingComponents/CS70'
+import CS161 from './components/routingComponents/CS161'
+import CS162 from './components/routingComponents/CS162'
+import CS168 from './components/routingComponents/CS168'
+import CS170 from './components/routingComponents/CS170'
+import CS182 from './components/routingComponents/CS182'
+import CS184 from './components/routingComponents/CS184'
+import CS186 from './components/routingComponents/CS186'
+import CS188 from './components/routingComponents/CS188'
+import CS189 from './components/routingComponents/CS189'
 
 function CoursePage({ match }) {
   // Using useParams to access route parameters with react-router-dom v6
@@ -28,7 +43,7 @@ function App() {
             <div className="button-group">
               <Link to="/COMPSCI10"><button className="course-button">CS10</button></Link>
               <Link to="/COMPSCI61A"><button className="course-button">CS61A</button></Link>
-              <Link to="/COMPSCI47B"><button className="course-button">CS61A</button></Link>
+              <Link to="/COMPSCI47B"><button className="course-button">CS47B</button></Link>
               <Link to="/COMPSCI61B"><button className="course-button">CS61B</button></Link>
               <Link to="/COMPSCI61C"><button className="course-button">CS61C</button></Link>
               <Link to="/COMPSCI70"><button className="course-button">CS70</button></Link>
@@ -57,7 +72,21 @@ function App() {
 
 
       <Routes> {/* Changed from Switch to Routes */}
-        <Route path="/:courseName" element={<CoursePage />} /> {/* Changed from component to element */}
+        <Route path="/COMPSCI10" element={<CS10/>} /> {/* Changed from component to element */}
+        <Route path="/COMPSCI61A" element={<CS61A/>} />
+        <Route path="/COMPSCI47B" element={<CS47B/>} />
+        <Route path="/COMPSCI61B" element={<CS61B/>} />
+        <Route path="/COMPSCI61C" element={<CS61C/>} />
+        <Route path="/COMPSCI70" element={<CS70/>} />
+        <Route path="/COMPSCI161" element={<CS161/>} />
+        <Route path="/COMPSCI162" element={<CS162/>} />
+        <Route path="/COMPSCI168" element={<CS168/>} />
+        <Route path="/COMPSCI170" element={<CS170/>} />
+        <Route path="/COMPSCI182" element={<CS182/>} />
+        <Route path="/COMPSCI184" element={<CS184/>} />
+        <Route path="/COMPSCI186" element={<CS186/>} />
+        <Route path="/COMPSCI188" element={<CS188/>} />
+        <Route path="/COMPSCI189" element={<CS189/>} />
       </Routes>
       <ChatBot className="chatbot component"/>
     </Router>
