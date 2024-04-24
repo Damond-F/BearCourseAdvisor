@@ -34,23 +34,25 @@ const Comments = ({ courseCode }) => {
     }
   };
   
-  const postComment = async (courseCode, comment) => {
-    const response = await fetch(`http://localhost:3000/comments/${courseCode}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ comment }),
-    });
-  
-    if (!response.ok) {
-      // Handle errors
-      console.error('Failed to post comment');
-    } else {
-      const updatedComments = await response.json();
-      // Update your state with the new comments list
+// In your Comments component in the frontend
+const postComment = async (comment) => {
+    try {
+      const response = await fetch(`http://localhost:3000/comments/${courseCode}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ comment }),
+      });
+      const updatedClass = await response.json();
+      // Update local state if needed, for example:
+      postComment(updatedClass.comments);
+    } catch (error) {
+      // Handle errors, e.g., by setting an error state and displaying a message to the user
+      console.error('There was an error posting the comment:', error);
     }
   };
+  
 
   return (
     <div>

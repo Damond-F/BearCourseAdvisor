@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom'; // Updated import
+import { BrowserRouter as Router, Routes, Route, Link, useParams, Navigate } from 'react-router-dom'; // Updated import
 import './App.css';
 import ChatBot from './components/chatBot'
 import Comments from './components/comments';
