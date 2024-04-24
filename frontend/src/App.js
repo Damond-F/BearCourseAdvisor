@@ -28,7 +28,7 @@ function App() {
             <div className="button-group">
               <Link to="/COMPSCI10"><button className="course-button">CS10</button></Link>
               <Link to="/COMPSCI61A"><button className="course-button">CS61A</button></Link>
-              <Link to="/COMPSCI47B"><button className="course-button">CS61A</button></Link>
+              <Link to="/COMPSCI47B"><button className="course-button">CS47B</button></Link>
               <Link to="/COMPSCI61B"><button className="course-button">CS61B</button></Link>
               <Link to="/COMPSCI61C"><button className="course-button">CS61C</button></Link>
               <Link to="/COMPSCI70"><button className="course-button">CS70</button></Link>
