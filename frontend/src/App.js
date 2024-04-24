@@ -20,28 +20,38 @@ function App() {
       <div className="container">
         <h1 className="header">Choose a course</h1> {/* Header */}
         <div className="button-container">
-          <Link to="/COMPSCI10"><button>CS10</button></Link>
-          <Link to="/COMPSCI61A"><button>CS61A</button></Link>
-          <Link to="/COMPSCI47B"><button>CS61A</button></Link>
-          <Link to="/COMPSCI61B"><button>CS61B</button></Link>
-          <Link to="/COMPSCI61C"><button>CS61C</button></Link>
-          <Link to="/COMPSCI70"><button>CS70</button></Link>
-          <Link to="/COMPSCI161"><button>CS161</button></Link>
-          <Link to="/COMPSCI162"><button>CS162</button></Link>
-          <Link to="/COMPSCI168"><button>CS168</button></Link>
-          <Link to="/COMPSCI184"><button>CS184</button></Link>
-          <Link to="/COMPSCI186"><button>CS186</button></Link>
-          <Link to="/COMPSCI170"><button>CS170</button></Link>
-          <Link to="/COMPSCI182"><button>CS182</button></Link>
-          <Link to="/COMPSCI188"><button>CS188</button></Link>
-          <Link to="/COMPSCI189"><button>CS189</button></Link>
+          <div>
+            <div className="button-group-name">Lower Division</div>
+            <div className="button-group">
+              <Link to="/COMPSCI10"><button className="course-button">CS10</button></Link>
+              <Link to="/COMPSCI61A"><button className="course-button">CS61A</button></Link>
+              <Link to="/COMPSCI47B"><button className="course-button">CS61A</button></Link>
+              <Link to="/COMPSCI61B"><button className="course-button">CS61B</button></Link>
+              <Link to="/COMPSCI61C"><button className="course-button">CS61C</button></Link>
+              <Link to="/COMPSCI70"><button className="course-button">CS70</button></Link>
+            </div>
+          </div>
+          <div>
+            <div className="button-group-name">Upper Division</div>
+            <div className="button-group">
+              <Link to="/COMPSCI161"><button className="course-button">CS161</button></Link>
+              <Link to="/COMPSCI162"><button className="course-button">CS162</button></Link>
+              <Link to="/COMPSCI168"><button className="course-button">CS168</button></Link>
+              <Link to="/COMPSCI170"><button className="course-button">CS170</button></Link>
+              <Link to="/COMPSCI182"><button className="course-button">CS182</button></Link>
+              <Link to="/COMPSCI184"><button className="course-button">CS184</button></Link>
+              <Link to="/COMPSCI186"><button className="course-button">CS186</button></Link>
+              <Link to="/COMPSCI188"><button className="course-button">CS188</button></Link>
+              <Link to="/COMPSCI189"><button className="course-button">CS189</button></Link>
+            </div>
+          </div>
         </div>
       </div>
 
       <Routes> {/* Changed from Switch to Routes */}
         <Route path="/:courseName" element={<CoursePage />} /> {/* Changed from component to element */}
       </Routes>
-      <ChatBot className="chatbot"/>
+      <ChatBot className="chatbot" />
     </Router>
   );
 }
