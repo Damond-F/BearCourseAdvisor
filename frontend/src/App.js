@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom'; // Updated import
 import './App.css';
 import ChatBot from './components/chatBot'
+import Comments from './components/comments';
 
 function CoursePage({ match }) {
   // Using useParams to access route parameters with react-router-dom v6
@@ -10,11 +11,14 @@ function CoursePage({ match }) {
     <div className="App">
       <h1>{courseName}</h1>
       {/* Add content for the course page here */}
+      <Comments courseCode={courseName} />,
     </div>
+
   );
 }
 
 function App() {
+  const { currentCourseCode } =  CoursePage
   return (
     <Router>
       <div className="container">
@@ -48,11 +52,17 @@ function App() {
         </div>
       </div>
 
+      <div>
+      </div>
+
+
+
       <Routes> {/* Changed from Switch to Routes */}
         <Route path="/:courseName" element={<CoursePage />} /> {/* Changed from component to element */}
       </Routes>
       <ChatBot className="chatbot component"/>
     </Router>
+    
   );
 }
 
