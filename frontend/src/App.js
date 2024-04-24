@@ -26,7 +26,7 @@ function CoursePage({ match }) {
     <div className="App">
       <h1>{courseName}</h1>
       {/* Add content for the course page here */}
-      <Comments courseCode={courseName} />,
+      <h3><Comments courseCode={courseName} /> </h3>
     </div>
 
   );
@@ -77,7 +77,7 @@ function App() {
         <Route path="/COMPSCI47B" element={<CS47B/>} />
         <Route path="/COMPSCI61B" element={<CS61B/>} />
         <Route path="/COMPSCI61C" element={<CS61C/>} />
-        <Route path="/COMPSCI70" element={<CS70/>} />
+        <Route path="/COMPSCI70"  element={<CS70/>} />
         <Route path="/COMPSCI161" element={<CS161/>} />
         <Route path="/COMPSCI162" element={<CS162/>} />
         <Route path="/COMPSCI168" element={<CS168/>} />
@@ -88,6 +88,8 @@ function App() {
         <Route path="/COMPSCI188" element={<CS188/>} />
         <Route path="/COMPSCI189" element={<CS189/>} />
       </Routes>
+
+      
       <ChatBot className="chatbot component"/>
     </Router>
     
