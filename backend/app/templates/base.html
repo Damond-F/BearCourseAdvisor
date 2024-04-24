@@ -1,0 +1,16 @@
+<!doctype html>
+<html> 
+    <head> 
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+        {% if title %}
+        <title>{{ title }} - BearCourseAdvisor</title>
+        {% else %} 
+        <title> Welcome to BearCourseAdvisor!</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>BearCourseAdvisor: <a href ="/index">Home</a></div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>

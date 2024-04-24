@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+
+{% block content %}
+        <h1>Hi, {{ user.username }}! Welcome to {{title}}!</h1>
+        {% for class in classes %} 
+        <div><p> {{ class.course.code }} : <em>{{class.description}}</em></p></div>
+        {% endfor %}
+{% end content %}
