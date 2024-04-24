@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom'; // Updated import
 import './App.css';
+import ChatBot from './components/chatBot'
 
 function CoursePage({ match }) {
   // Using useParams to access route parameters with react-router-dom v6
@@ -21,6 +22,7 @@ function App() {
         <div className="button-container">
           <Link to="/COMPSCI10"><button>CS10</button></Link>
           <Link to="/COMPSCI61A"><button>CS61A</button></Link>
+          <Link to="/COMPSCI47B"><button>CS61A</button></Link>
           <Link to="/COMPSCI61B"><button>CS61B</button></Link>
           <Link to="/COMPSCI61C"><button>CS61C</button></Link>
           <Link to="/COMPSCI70"><button>CS70</button></Link>
@@ -33,13 +35,13 @@ function App() {
           <Link to="/COMPSCI182"><button>CS182</button></Link>
           <Link to="/COMPSCI188"><button>CS188</button></Link>
           <Link to="/COMPSCI189"><button>CS189</button></Link>
-          <Link to="/COMPSCI191"><button>CS191</button></Link>
         </div>
       </div>
 
       <Routes> {/* Changed from Switch to Routes */}
         <Route path="/:courseName" element={<CoursePage />} /> {/* Changed from component to element */}
       </Routes>
+      <ChatBot className="chatbot"/>
     </Router>
   );
 }
