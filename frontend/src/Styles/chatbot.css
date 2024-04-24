@@ -1,3 +1,4 @@
-.ChatContainer {
-    transform: scale(0.2);
+.messageListContainer {
+    max-height: 400px;
+    overflow-y: auto;
 }

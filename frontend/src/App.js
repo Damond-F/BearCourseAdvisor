@@ -41,7 +41,7 @@ function App() {
       <Routes> {/* Changed from Switch to Routes */}
         <Route path="/:courseName" element={<CoursePage />} /> {/* Changed from component to element */}
       </Routes>
-      <ChatBot className="chatbot"/>
+      <ChatBot className="chatbot component"/>
     </Router>
   );
 }
