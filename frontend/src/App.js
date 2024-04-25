@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useParams, Navigate } from 'react-router-dom'; // Updated import
+import { BrowserRouter as Router, Routes, Route, Link, useParams, Navigate } from 'react-router-dom'; 
 import './App.css';
 import ChatBot from './components/chatBot'
 import Comments from './components/comments';
+<<<<<<< HEAD
 import Graph from './components/graph';
+=======
+import Logo from './components/logo';
+>>>>>>> 5a1af6ce00432cacb3bf866cdcb9fc4d98fab991
 import CS10 from './components/routingComponents/CS10'
 import CS61A from './components/routingComponents/CS61A'
 import CS47B from './components/routingComponents/CS47B'
@@ -52,6 +56,7 @@ function App() {
   return (
     <Router>
       <div className="container">
+        <Logo />
         <h1 className="header">Choose a course</h1> {/* Header */}
         <div className="button-container">
           <div>
