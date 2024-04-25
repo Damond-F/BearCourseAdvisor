@@ -1,5 +1,5 @@
 import React from 'react';
-import logoImage from '../images/BCA logo.webp'
+import logoImage from '../images/BCA-logo.webp'
 
 function Logo() {
   return (

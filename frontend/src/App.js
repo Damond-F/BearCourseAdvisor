@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useParams, Navigate } from 'react-router-dom'; 
+import { BrowserRouter as Router, Routes, Route, Link, useParams, Navigate } from 'react-router-dom';
 import './App.css';
 import ChatBot from './components/chatBot'
 import Comments from './components/comments';
