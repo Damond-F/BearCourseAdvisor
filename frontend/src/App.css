@@ -49,6 +49,7 @@
 .button-group{
   display: flex;
   flex-wrap: wrap; 
+  /* justify-content: center; */
   gap: 20px;  
 }
 
@@ -70,9 +71,17 @@
   transform: scale(1.02);
 }
 
-.course-button:active {
+/* .course-button:active{
   transform: scale(0.95);
   box-shadow: 0 1px 2px rgba(0,0,0, 0.2);
+} */
+
+.course-button.active {
+  background-color: #004085; 
+  color: #00bcd4; 
+  border: 2px solid #00bcd4; 
+  box-shadow: 0 0 10px rgba(0, 188, 212, 0.75); 
+  transform: scale(1.02); 
 }
 
 
