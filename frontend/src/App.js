@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useParams, Navigate } fro
 import './App.css';
 import ChatBot from './components/chatBot'
 import Comments from './components/comments';
+import Graph from './components/graph';
 import CS10 from './components/routingComponents/CS10'
 import CS61A from './components/routingComponents/CS61A'
 import CS47B from './components/routingComponents/CS47B'
@@ -104,7 +105,8 @@ function App() {
         <Route path="/COMPSCI189" element={<CS189 />} />
       </Routes>
 
-
+      <Graph />
+      
       <ChatBot className="chatbot component" />
     </Router>
 
