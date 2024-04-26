@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import './comments.css'
+import Header from './header'
 
 const Comments = ({ courseCode }) => {
   // Using a state object where keys are course codes and values are arrays of comments
   const [courseComments, setCourseComments] = useState({});
+
+const CommentBox = ({ comment }) => {
+  return (
+    <div className="comment-box">
+      <p>{comment}</p>
+    </div>
+  );
+};
 
   // Load comments from localStorage when the component mounts
   useEffect(() => {
@@ -33,45 +43,32 @@ const Comments = ({ courseCode }) => {
       setCurrentComment('');
     }
   };
-  
-// In your Comments component in the frontend
-const postComment = async (comment) => {
-    try {
-      const response = await fetch(`http://localhost:3000/comments/${courseCode}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ comment }),
-      });
-      const updatedClass = await response.json();
-      // Update local state if needed, for example:
-      postComment(updatedClass.comments);
-    } catch (error) {
-      // Handle errors, e.g., by setting an error state and displaying a message to the user
-      console.error('There was an error posting the comment:', error);
-    }
-  };
-  
+
+  const headerStyle = { textDecoration: 'underline' };
 
   return (
     <div>
-      <h3>Comments for {courseCode}</h3>
-      <ul>
-        {courseComments[courseCode]?.map((comment, index) => (
-          <li key={index}>{comment}</li>
-        ))}
-      </ul>
+      <Header text={`Comments for ${courseCode}`} />
       <form onSubmit={handleCommentSubmit}>
         <textarea
           value={currentComment}
           onChange={handleCommentChange}
           placeholder="Write a comment..."
+          style={{ width: '100%', minHeight: '75px', marginTop: '10px', fontSize: '14px' }}
         />
-        <button type="submit">Post Comment</button>
+        <button type="submit" style={{backgroundColor: 'lightblue', fontSize: '14px', padding: '10px 20px', marginBottom: '20px'}}>Post Comment</button>
       </form>
+      <div className="comment-list">
+        {courseComments[courseCode]?.map((comment, index) => (
+          <div className='comment-box' style={{padding: '15px', margin: '10px', borderRadius: '5px'}}>
+            {comment}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
+  
+  
 
 export default Comments;
