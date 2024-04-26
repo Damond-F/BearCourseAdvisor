@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useParams, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
 import './App.css';
 import ChatBot from './components/chatBot'
 import Comments from './components/comments';
-import Graph from './components/graph';
 import StarRating from './components/StarRating';
 import Logo from './components/logo';
 import CS10 from './components/routingComponents/CS10'
@@ -66,7 +65,7 @@ function App() {
           </div>
         </div>
         <h2 className="sub-header">Choose a course</h2> {/* Header */}
-        <div className='buttons-and-chatbot'>
+        <div className="buttons-and-chatbot">
           <div className="button-container">
             <div className="button-sub-container">
               <div className="button-group-name">Lower Division</div>

@@ -94,9 +94,10 @@ body{
   margin-left: 4vw;
 }
 
-.button-and-chatbot {
+.buttons-and-chatbot {
   display: flex;
-  color: #004085;
+  flex-direction: row;
+  gap: 4vw;
 }
 
 .button-sub-container{
