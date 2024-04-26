@@ -30,6 +30,18 @@ const dataSchema = new mongoose.Schema({
     NP: { type: Number, required: true },
     average_course_gpa: { type: Number, required: true },
     average_letter_grade: { type: String, required: true },
+  }, 
+  prof_ratings: {
+    prof_ratings: {
+      type: Map,
+      of: new mongoose.Schema({
+        professor: { type: String, required: true },
+        rating: { type: String, required: true },
+        difficulty: { type: String, required: true },
+        takeAgain: { type: String, required: true }
+      }),
+      required: false // Set to true if this field is mandatory
+    },
   }
   // other fields...
 });
