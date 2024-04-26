@@ -16,7 +16,7 @@ mongoose.connect(`mongodb+srv://BearCourseAdivsor:2skchvnjBwa6ays9@cluster0.7jj4
 app.get('/getText', async (req, res) => {
     try {
         // Using the model to query all documents and select specific fields
-        const courseData = await dataModel.find({}, 'courseName description generated_text grades');
+        const courseData = await dataModel.find({}, 'courseName description generated_text grades prof_ratings');
         // If there's no data, respond accordingly
         if (courseData.length === 0) {
             return res.status(404).json({ message: "No data fouvnd" });
@@ -26,7 +26,8 @@ app.get('/getText', async (req, res) => {
             courseName: course.courseName,
             description: course.description,
             generated_text: course.generated_text,
-            grades: course.grades
+            grades: course.grades,
+            prof_ratings: course.prof_ratings
         }));
         // Send the formatted response data
         res.json(responseData);
@@ -37,6 +38,31 @@ app.get('/getText', async (req, res) => {
 
 });
 
+app.get('/:courseName/profRatings', async (req, res) => {
+    try {
+        // Find the course by its courseName - ensure the case matches the stored data
+        const courseNameRegex = new RegExp('^' + req.params.courseName + '$', 'i');
+        const course = await dataModel.findOne({ courseName: courseNameRegex }, 'prof_ratings');
+        if (!course) {
+            return res.status(404).send('Course not found');
+        }
+
+        // Assuming the structure based on your screenshot, you should access just `prof_ratings`
+        // Since `prof_ratings` itself is not a Map type, but its content is a Map.
+        const ratings = {};
+        console.log(course.prof_ratings)
+        if (course.prof_ratings) {
+            for (const [key, value] of Object.entries(course.prof_ratings)) {
+                ratings[key] = value;
+            }
+        }
+        
+        res.json(course.prof_ratings); // Send the prof_ratings data
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 
 app.listen(3001, () => {
