@@ -14,7 +14,10 @@ function CS10() {
       .then(response => {
         console.log("API Response:", response.data);
         const gradeData = response.data.find(course => course.courseName === courseOfficialName);
+        const courseData = response.data.find(course => course.courseName === courseOfficialName);
         setGradeDistribution(gradeData.grades);
+        setCourseDescription(courseData.description[1])
+        setText(courseData.generated_text)
       })
       .catch(error => {
         console.error('Failed to fetch grade distribution:', error);

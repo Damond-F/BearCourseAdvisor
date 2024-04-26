@@ -82,13 +82,15 @@ function ChatBot() {
 
     return(
         <div style={{ 
-            height: '500px',
-            maxWidth: '600px',
+            height: '620px',
+            width: '900px',
             display: 'grid',
             transform: 'scale(0.8)',
             transformOrigin: 'center top',
             border: '2px solid #ccc',
-            borderRadius: '5px'}}>
+            borderRadius: '5px',
+            marginTop: '20px'
+            }}>
             <ChatContainer>
                 <MessageList
                 scrollBehavior='smooth'
