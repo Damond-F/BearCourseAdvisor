@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 // Define your schema - ensure field names match your database
 const dataSchema = new mongoose.Schema({
+  courseName: {
+    type: String,
+    required: true
+  },
   description: {
     type: [String],
     required: false

@@ -16,13 +16,14 @@ mongoose.connect(`mongodb+srv://BearCourseAdivsor:2skchvnjBwa6ays9@cluster0.7jj4
 app.get('/getText', async (req, res) => {
     try {
         // Using the model to query all documents and select specific fields
-        const courseData = await dataModel.find({}, 'description generated_text grades');
+        const courseData = await dataModel.find({}, 'courseName description generated_text grades');
         // If there's no data, respond accordingly
         if (courseData.length === 0) {
             return res.status(404).json({ message: "No data fouvnd" });
         }
         // Map over the array of documents to format the response
         const responseData = courseData.map(course => ({
+            courseName: course.courseName,
             description: course.description,
             generated_text: course.generated_text,
             grades: course.grades
