@@ -4,6 +4,7 @@ import './App.css';
 import ChatBot from './components/chatBot'
 import Comments from './components/comments';
 import Graph from './components/graph';
+import StarRating from './components/StarRating';
 import Logo from './components/logo';
 import CS10 from './components/routingComponents/CS10'
 import CS61A from './components/routingComponents/CS61A'
@@ -120,6 +121,8 @@ function App() {
       <Graph />
 
       <ChatBot className="chatbot component" />
+
+      <StarRating></StarRating>
 
       {selectedCourse && (
         <h2 className="comments-container" style={{marginTop: '-60px', marginBottom: '60px'}}>
