@@ -4,7 +4,6 @@ import Graph from '../graph';
 import Comments from '../comments';
 
 function CS188() {
-  const courseCode = 'CS188';
   const courseOfficialName = 'COMPSCI188';
   const [gradeDistribution, setGradeDistribution] = useState(null);
 
@@ -24,7 +23,6 @@ function CS188() {
     <div>
       <h1>Test CS188</h1>
       <Graph gradeDistribution={gradeDistribution} />
-      <Comments courseCode={courseCode} />
     </div>
   );
 }

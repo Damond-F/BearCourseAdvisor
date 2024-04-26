@@ -4,6 +4,8 @@ import './App.css';
 import ChatBot from './components/chatBot'
 import Comments from './components/comments';
 import StarRating from './components/StarRating';
+import Graph from './components/graph';
+import StarRating from './components/rating';
 import Logo from './components/logo';
 import CS10 from './components/routingComponents/CS10'
 import CS61A from './components/routingComponents/CS61A'
