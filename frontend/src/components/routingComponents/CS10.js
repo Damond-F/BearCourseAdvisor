@@ -7,6 +7,8 @@ import StarRating from '../rating';
 function CS10() {
   const courseOfficialName = 'COMPSCI10';
   const [gradeDistribution, setGradeDistribution] = useState(null);
+  const [description, setCourseDescription] = useState(null)
+  const [generated_text, setText] = useState(null)
 
 
   useEffect(() => {

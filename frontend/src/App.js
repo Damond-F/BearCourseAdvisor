@@ -3,9 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-r
 import './App.css';
 import ChatBot from './components/chatBot'
 import Comments from './components/comments';
-import StarRating from './components/StarRating';
-import Graph from './components/graph';
 import StarRating from './components/rating';
+import Graph from './components/graph';
 import Logo from './components/logo';
 import CS10 from './components/routingComponents/CS10'
 import CS61A from './components/routingComponents/CS61A'
@@ -123,7 +122,6 @@ function App() {
         <Route path="/COMPSCI189" element={<CS189 />} />
       </Routes>
 
-      <StarRating></StarRating>
 
       {selectedCourse && (
         <h2 className="comments-container" style={{marginTop: '-60px', marginBottom: '60px'}}>
