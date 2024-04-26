@@ -1,49 +1,59 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
-import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
-import './graph.css'; // Import the CSS file
+import './graph.css';
 
-function Graph() {
+function Graph({ gradeDistribution }) {
   const canvasRef = useRef(null);
-  const chartRef = useRef(null); // Add a reference for the chart instance
+  const chartRef = useRef(null);
+
+  // Define the desired order of grade labels
+  const orderedGradeLabels = [
+    'A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D', 'F', 'P', 'NP'
+  ];
+
+  // Mapping of grade keys to display labels
+  const gradeLabelMap = {
+    A_plus: 'A+',
+    A_minus: 'A-',
+    B_plus: 'B+',
+    B_minus: 'B-',
+    C_plus: 'C+',
+    C_minus: 'C-',
+    // Add any other mappings as necessary
+  };
 
   useEffect(() => {
-    const ctx = canvasRef.current.getContext('2d');
+    if (!gradeDistribution || !canvasRef.current) {
+      return; // Exit if no gradeDistribution data or if canvas isn't ready
+    }
 
-    const gradeDistribution = {
-      'A+': 0.07,
-      'A': 0.17,
-      'A-': 0.16,
-      'B+': 0.2,
-      'B': 0.19,
-      'B-': 0.1,
-      'C+': 0.04,
-      'C': 0.02,
-      'C-': 0.01,
-      'D': 0.02,
-      'F': 0.03,
-      'P': 0.14,
-      'NP': 0.04
-    };
+    // Transform gradeDistribution keys to their display labels
+    const transformedGrades = Object.keys(gradeDistribution).reduce((acc, key) => {
+      const newKey = gradeLabelMap[key] || key;
+      acc[newKey] = gradeDistribution[key];
+      return acc;
+    }, {});
 
-    const labels = Object.keys(gradeDistribution);
-    const data = Object.values(gradeDistribution);
+    // Filter and sort the labels based on the defined order
+    const sortedLabels = orderedGradeLabels.filter(label => label in transformedGrades);
+    const sortedData = sortedLabels.map(label => transformedGrades[label]);
 
-    // Check if chartRef.current is defined and destroy the chart instance if it exists
-    if (chartRef.current !== null) {
+    if (chartRef.current) {
       chartRef.current.destroy();
     }
 
-    // Create a new Chart.js instance and store the reference
-    chartRef.current = new Chart(ctx, {
+    const maxValue = Math.max(...sortedData);
+    const roundedMaxValue = Math.ceil(maxValue / 0.05) * 0.05; // Rounds up to the nearest 0.05
+
+    chartRef.current = new Chart(canvasRef.current.getContext('2d'), {
       type: 'bar',
       data: {
-        labels: labels,
+        labels: sortedLabels,
         datasets: [{
           label: 'Grade Distribution',
-          data: data,
-          backgroundColor: 'rgba(54, 162, 235, 0.5)', // Blue color with transparency
-          borderColor: 'rgba(54, 162, 235, 1)', // Blue color
+          data: sortedData,
+          backgroundColor: 'rgba(54, 162, 235, 0.5)',
+          borderColor: 'rgba(54, 162, 235, 1)',
           borderWidth: 1
         }]
       },
@@ -51,21 +61,20 @@ function Graph() {
         scales: {
           y: {
             beginAtZero: true,
+            suggestedMax: roundedMaxValue, // Use the calculated max value here
             ticks: {
               font: {
-                family: 'Arial',
-                weight: 'normal', // Make the axis labels bold
-                size: 20 // Increase the font size of the axis labels
-              }
+                size: 20 // Increase y-axis tick font size
+              },
+              // Other y-axis options...
             }
           },
           x: {
             ticks: {
               font: {
-                family: 'Arial',
-                weight: 'normal', // Make the axis labels bold
-                size: 20 // Increase the font size of the axis labels
-              }
+                size: 16 // Increase x-axis tick font size
+              },
+              // Other x-axis options...
             }
           }
         },
@@ -73,34 +82,22 @@ function Graph() {
           legend: {
             labels: {
               font: {
-                family: 'Arial',
-                weight:'bold', // Make the legend text bold
-                size: 20 // Increase the font size of the legend text
+                size: 18 // Increase legend label font size
               }
             }
           }
-        },
-        layout: {
-          padding: {
-            left: 20, // Adjust the left padding of the chart area
-            right: 20, // Adjust the right padding of the chart area
-            top: 20, // Adjust the top padding of the chart area
-            bottom: 20 // Adjust the bottom padding of the chart area
-          }
+          // Other plugin options...
         }
+        // Other chart options...
       }
     });
 
-    // Cleanup function to destroy the chart instance when component unmounts
-    return () => {
-      if (chartRef.current !== null) {
-        chartRef.current.destroy();
-      }
-    };
-  }, []);
+    // Cleanup function
+    return () => chartRef.current?.destroy();
+  }, [gradeDistribution]);
 
   return (
-    <div className="graph-container"> {/* Add a class name for styling */}
+    <div className="graph-container">
       <canvas ref={canvasRef}></canvas>
     </div>
   );
