@@ -35,28 +35,19 @@ function CoursePage({ match }) {
 }
 
 function App() {
-  const [activePath, setActivePath] = useState('');
-
-  const handleButtonClick = (path) => {
-    setActivePath(path);
-  };
-
-  const renderButton = (path, label) => (
-    <Link to={path}>
-      <button className={`course-button ${activePath === path ? 'active' : ''}`}
-        onClick={() => handleButtonClick(path)}>
-        {label}
-      </button>
-    </Link>
-  );
-
   return (
     <Router>
       <div className="container">
+        <div className="header">
         <Logo />
-        <h1 className="header">Choose a course</h1> {/* Header */}
+        <div className="title-container">
+          <div className="title">Bear Course</div>
+          <div className="subtitle">Advisor</div>
+          </div>
+        </div>
+        <h2 className="sub-header">Choose a course</h2> {/* Header */}
         <div className="button-container">
-          <div>
+          <div className="button-sub-container">
             <div className="button-group-name">Lower Division</div>
             <div className="button-group">
               {renderButton("/COMPSCI10", "CS10")}
@@ -67,7 +58,7 @@ function App() {
               {renderButton("/COMPSCI70", "CS70")}
             </div>
           </div>
-          <div>
+          <div className="button-sub-container">
             <div className="button-group-name">Upper Division</div>
             <div className="button-group">
               {renderButton("/COMPSCI161", "CS161")}
@@ -106,12 +97,7 @@ function App() {
         <Route path="/COMPSCI188" element={<CS188 />} />
         <Route path="/COMPSCI189" element={<CS189 />} />
       </Routes>
-
-      <Graph />
-
-      <ChatBot className="chatbot component" />
     </Router>
-
   );
 }
 
