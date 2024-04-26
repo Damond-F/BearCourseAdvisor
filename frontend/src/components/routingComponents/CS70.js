@@ -3,7 +3,7 @@ import axios from 'axios';
 import Graph from '../graph';
 import Comments from '../comments';
 
-function CS10() {
+function CS70() {
   const courseCode = 'CS70';
   const courseOfficialName = 'COMPSCI70';
   const [gradeDistribution, setGradeDistribution] = useState(null);
@@ -29,4 +29,4 @@ function CS10() {
   );
 }
 
-export default CS10;
+export default CS70;

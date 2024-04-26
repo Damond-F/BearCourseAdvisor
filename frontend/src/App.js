@@ -66,34 +66,38 @@ function App() {
           </div>
         </div>
         <h2 className="sub-header">Choose a course</h2> {/* Header */}
-        <div className="button-container">
-          <div className="button-sub-container">
-            <div className="button-group-name">Lower Division</div>
-            <div className="button-group">
-              {renderButton("/COMPSCI10", "CS10")}
-              {renderButton("/COMPSCI61A", "CS61A")}
-              {renderButton("/COMPSCI47B", "CS47B")}
-              {renderButton("/COMPSCI61B", "CS61B")}
-              {renderButton("/COMPSCI61C", "CS61C")}
-              {renderButton("/COMPSCI70", "CS70")}
+        <div className='buttons-and-chatbot'>
+          <div className="button-container">
+            <div className="button-sub-container">
+              <div className="button-group-name">Lower Division</div>
+              <div className="button-group">
+                {renderButton("/COMPSCI10", "CS10")}
+                {renderButton("/COMPSCI61A", "CS61A")}
+                {renderButton("/COMPSCI47B", "CS47B")}
+                {renderButton("/COMPSCI61B", "CS61B")}
+                {renderButton("/COMPSCI61C", "CS61C")}
+                {renderButton("/COMPSCI70", "CS70")}
+              </div>
+            </div>
+            <div className="button-sub-container">
+              <div className="button-group-name">Upper Division</div>
+              <div className="button-group">
+                {renderButton("/COMPSCI161", "CS161")}
+                {renderButton("/COMPSCI162", "CS162")}
+                {renderButton("/COMPSCI168", "CS168")}
+                {renderButton("/COMPSCI170", "CS170")}
+                {renderButton("/COMPSCI182", "CS182")}
+                {renderButton("/COMPSCI184", "CS184")}
+                {renderButton("/COMPSCI186", "CS186")}
+                {renderButton("/COMPSCI188", "CS188")}
+                {renderButton("/COMPSCI189", "CS189")}
+              </div>
             </div>
           </div>
-          <div className="button-sub-container">
-            <div className="button-group-name">Upper Division</div>
-            <div className="button-group">
-              {renderButton("/COMPSCI161", "CS161")}
-              {renderButton("/COMPSCI162", "CS162")}
-              {renderButton("/COMPSCI168", "CS168")}
-              {renderButton("/COMPSCI170", "CS170")}
-              {renderButton("/COMPSCI182", "CS182")}
-              {renderButton("/COMPSCI184", "CS184")}
-              {renderButton("/COMPSCI186", "CS186")}
-              {renderButton("/COMPSCI188", "CS188")}
-              {renderButton("/COMPSCI189", "CS189")}
-            </div>
-          </div>
+          <ChatBot className="chatbot component" />
         </div>
       </div>
+  
 
       <div>
       </div>
@@ -117,10 +121,6 @@ function App() {
         <Route path="/COMPSCI188" element={<CS188 />} />
         <Route path="/COMPSCI189" element={<CS189 />} />
       </Routes>
-
-      <Graph />
-
-      <ChatBot className="chatbot component" />
 
       <StarRating></StarRating>
 

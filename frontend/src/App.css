@@ -89,10 +89,15 @@ body{
 
 .button-container{
   display: flex;
-  justify-content: center;
-  gap: 15vw;
+  justify-content: left;
+  gap: 4vw;
+  margin-left: 4vw;
 }
 
+.button-and-chatbot {
+  display: flex;
+  color: #004085;
+}
 
 .button-sub-container{
   display: flex;
@@ -104,7 +109,7 @@ body{
   border-radius: 10px; /* Rounded corners */
   padding: 20px; /* Add some padding */
   margin-top: 20px; /* Add some margin at the top */
-  width: 400px; /* Adjust width as needed */
+  width: 320px; /* Adjust width as needed */
   max-height: 500px; /* Adjust height as needed */
   overflow-y: auto; /* Enable scrolling */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); /* Drop shadow for floating effect */
