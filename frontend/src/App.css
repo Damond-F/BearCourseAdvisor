@@ -36,7 +36,7 @@
 }
 
 body{
-  background-color: #f8f8f8;
+  background-color: rgb(247, 248, 252);
 }
 
 .logo-container img{
@@ -99,19 +99,21 @@ body{
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  border: 3px solid #0a1c36; /* Adjust the color to match your design */
-  background-color: white; /* Set a background color */
-  border-radius: 10px; /* Rounded corners */
-  padding: 20px; /* Add some padding */
-  margin-top: 20px; /* Add some margin at the top */
-  width: 400px; /* Adjust width as needed */
-  max-height: 500px; /* Adjust height as needed */
-  overflow-y: auto; /* Enable scrolling */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); /* Drop shadow for floating effect */
+  border: 2px solid #dfe0eb; 
+  background-color: white; 
+  border-radius: 10px; 
+  padding: 20px; 
+  margin: 20px 30px; 
+  width: 500px; 
+  max-height: 500px; 
+  overflow-y: auto; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
 }
 
 .button-group-name{
   font-size: 30px;
+  color: #133462;
+  font-weight: bold;
 }
 
 .button-group{
@@ -121,28 +123,37 @@ body{
   gap: 30px;
 }
 
-/* Customizes the scrollbar track */
 .button-sub-container::-webkit-scrollbar-track {
-  background-color: #f0f0f0; /* Light grey track */
+  background-color: #dfe0eb; 
 }
 
-/* Customizes the scrollbar handle */
 .button-sub-container::-webkit-scrollbar-thumb {
-  background-color: #333; /* Dark scrollbar handle */
-  border-radius: 10px; /* Rounded corners on the scrollbar handle */
-  border: 3px solid #f0f0f0; /* Creates padding around the scrollbar handle */
+  background-color: #333; 
+  border-radius: 10px; 
+  border: 3px solid #dfe0eb; 
 }
 
-/* Customizes the size of the scrollbar */
 .button-sub-container::-webkit-scrollbar {
-  width: 16px; /* Width of the scrollbar */
-  height: 16px; /* Height of the scrollbar (for horizontal scrollbars) */
+  width: 16px; 
+  height: 16px; 
+}
+
+@media (max-width: 850px) {
+  .button-container{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button-sub-container{
+    /* width: 100%; */
+    margin-bottom: 20px;
+  }
 }
 
 
 .course-button {
   width: 100%;
-  padding: 15px 40px; /* Double the button size */
+  padding: 15px 40px; 
   font-size: 22px;
   background-color: #133462;
   color: white;
