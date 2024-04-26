@@ -37,7 +37,7 @@ const Comments = ({ courseCode }) => {
 // In your Comments component in the frontend
 const postComment = async (comment) => {
     try {
-      const response = await fetch(`http://localhost:3000/comments/${courseCode}`, {
+      const response = await fetch(`http://localhost:3000/${courseCode}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
