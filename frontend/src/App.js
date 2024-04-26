@@ -35,25 +35,6 @@ function CoursePage({ match }) {
 }
 
 function App() {
-  const [activePath, setActivePath] = useState('');
-  const [selectedCourse, setSelectedCourse] = useState(null);
-
-  const handleButtonClick = (path) => {
-    setActivePath(path);
-    setSelectedCourse(path);
-  };
-
-  const renderButton = (path, label) => (
-    <Link to={path}>
-      <button className={`course-button ${activePath === path ? 'active' : ''}`}
-        onClick={() => handleButtonClick(path)}>
-        {label}
-      </button>
-    </Link>
-  );
-
-  const courseCode = activePath.startsWith('/') ? activePath.substring(1) : activePath;
-
   return (
     <Router>
       <div className="container">
@@ -116,18 +97,7 @@ function App() {
         <Route path="/COMPSCI188" element={<CS188 />} />
         <Route path="/COMPSCI189" element={<CS189 />} />
       </Routes>
-
-      <Graph />
-
-      <ChatBot className="chatbot component" />
-
-      {selectedCourse && (
-        <h2 className="comments-container" style={{marginTop: '-60px', marginBottom: '60px'}}>
-        <Comments courseCode={courseCode} />
-      </h2>
-      )}
     </Router>
-    
   );
 }
 
