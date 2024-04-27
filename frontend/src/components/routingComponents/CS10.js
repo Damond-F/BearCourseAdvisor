@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Graph from '../graph';
 import StarRating from '../rating';
+import './textStyles.css'
 
 
 function CS10() {
   const courseOfficialName = 'COMPSCI10';
   const [gradeDistribution, setGradeDistribution] = useState(null);
   const [description, setCourseDescription] = useState(null)
-  const [generated_text, setText] = useState(null)
+  const [text, setText] = useState('')
 
 
   useEffect(() => {
@@ -20,11 +21,14 @@ function CS10() {
         setGradeDistribution(gradeData.grades);
         setCourseDescription(courseData.description[1])
         setText(courseData.generated_text)
+      
       })
       .catch(error => {
         console.error('Failed to fetch grade distribution:', error);
       });
   }, []);
+
+  const cleanText = text.replace(/[#*]/g, '')
 
   const [profRatings, setProfRatings] = useState({});
   useEffect(() => {
@@ -44,7 +48,9 @@ function CS10() {
 
   return (
     <div>
-    <h1>CS10 - The Joy of Computing</h1>
+    <h1 className='courseTitle'>CS10 - The Joy of Computing</h1>
+    <div className='courseDescription'> {description} </div>
+    <div className='courseText'> {cleanText} </div>
     <Graph gradeDistribution={gradeDistribution} />
     {Object.entries(profRatings).map(([professorName, ratingInfo]) => (
       <div key={professorName}>

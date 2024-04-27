@@ -1,0 +1,27 @@
+.courseTitle {
+    font-size: 24px;
+    color: #0056b3;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #0056b3;
+    margin-bottom: 20px;
+}
+
+/* Styling for the course description */
+.courseDescription {
+    font-size: 20px;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* Styling for the main course text */
+.courseText {
+    font-size: 20px;
+    line-height: 1.6;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
