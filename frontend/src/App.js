@@ -124,7 +124,7 @@ function App() {
 
 
       {selectedCourse && (
-        <h2 className="comments-container" style={{marginTop: '-60px', marginBottom: '60px'}}>
+        <h2 className="comments-container" style={{marginTop: '60px', marginBottom: '60px'}}>
         <Comments courseCode={courseCode} />
       </h2>
       )}
