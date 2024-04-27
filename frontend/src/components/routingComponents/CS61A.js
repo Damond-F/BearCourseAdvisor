@@ -48,7 +48,7 @@ function CS61A() {
 
   return (
     <div>
-    <h1>CS61A - Structure and Interpretation of Computer Programs</h1>
+    <h1 className='courseTitle'>CS61A - Structure and Interpretation of Computer Programs</h1>
     <div className='courseDescription'> {description} </div>
     <div className='courseText'> {cleanText} </div>
     <Graph gradeDistribution={gradeDistribution} />

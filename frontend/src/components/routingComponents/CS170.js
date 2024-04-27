@@ -47,7 +47,7 @@ function CS170() {
 
   return (
     <div>
-    <h1>CS170 - Advanced Algorithms</h1>
+    <h1 className='courseTitle'>CS170 - Advanced Algorithms</h1>
     <div className='courseDescription'> {description} </div>
     <div className='courseText'> {cleanText} </div>
     <Graph gradeDistribution={gradeDistribution} />

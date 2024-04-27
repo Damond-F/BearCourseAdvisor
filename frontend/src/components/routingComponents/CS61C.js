@@ -48,7 +48,7 @@ function CS61C() {
 
   return (
     <div>
-    <h1>CS61C - Computer Architecture</h1>
+    <h1 className='courseTitle'>CS61C - Computer Architecture</h1>
     <div className='courseDescription'> {description} </div>
     <div className='courseText'> {cleanText} </div>
     <Graph gradeDistribution={gradeDistribution} />

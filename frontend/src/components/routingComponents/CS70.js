@@ -47,7 +47,7 @@ function CS70() {
 
   return (
     <div>
-    <h1>CS70 - Discrete Math</h1>
+    <h1 className='courseTitle'>CS70 - Discrete Math</h1>
     <div className='courseDescription'> {description} </div>
     <div className='courseText'> {cleanText} </div>
     <Graph gradeDistribution={gradeDistribution} />

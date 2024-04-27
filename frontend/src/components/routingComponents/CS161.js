@@ -47,7 +47,7 @@ function CS161() {
 
   return (
     <div>
-    <h1>CS161 - Computer Security</h1>
+    <h1 className='courseTitle'>CS161 - Computer Security</h1>
     <div className='courseDescription'> {description} </div>
     <div className='courseText'> {cleanText} </div>
     <Graph gradeDistribution={gradeDistribution} />

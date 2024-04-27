@@ -46,7 +46,7 @@ function CS168() {
 
   return (
     <div>
-    <h1>CS168 - Introduction to the Internet</h1>
+    <h1 className='courseTitle'>CS168 - Introduction to the Internet</h1>
     <div className='courseDescription'> {description} </div>
     <div className='courseText'> {cleanText} </div>
     <Graph gradeDistribution={gradeDistribution} />

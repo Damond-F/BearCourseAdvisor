@@ -47,7 +47,7 @@ function CS188() {
 
   return (
     <div>
-    <h1>CS188 - Introduction to Artificial Intelligence</h1>
+    <h1 className='courseTitle'>CS188 - Introduction to Artificial Intelligence</h1>
     <div className='courseDescription'> {description} </div>
     <div className='courseText'> {cleanText} </div>
     <Graph gradeDistribution={gradeDistribution} />

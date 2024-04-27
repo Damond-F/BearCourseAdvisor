@@ -47,7 +47,7 @@ function CS61B() {
 
   return (
     <div>
-    <h1>CS61B - Data Structures and Algorithms</h1>
+    <h1 className='courseTitle'>CS61B - Data Structures and Algorithms</h1>
     <div className='courseDescription'> {description} </div>
     <div className='courseText'> {cleanText} </div>
     <Graph gradeDistribution={gradeDistribution} />

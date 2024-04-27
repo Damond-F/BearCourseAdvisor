@@ -47,7 +47,7 @@ function CS186() {
 
   return (
     <div>
-    <h1>CS186 - Introduction to Database Systems</h1>
+    <h1 className='courseTitle'>CS186 - Introduction to Database Systems</h1>
     <div className='courseDescription'> {description} </div>
     <div className='courseText'> {cleanText} </div>
     <Graph gradeDistribution={gradeDistribution} />

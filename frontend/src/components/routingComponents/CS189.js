@@ -47,7 +47,7 @@ function CS189() {
 
   return (
     <div>
-    <h1>CS189 - Introduction to Machine Learning</h1>
+    <h1 className='courseTitle'>CS189 - Introduction to Machine Learning</h1>
     <div className='courseDescription'> {description} </div>
     <div className='courseText'> {cleanText} </div>
     <Graph gradeDistribution={gradeDistribution} />

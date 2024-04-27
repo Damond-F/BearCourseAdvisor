@@ -47,7 +47,7 @@ function CS162() {
 
   return (
     <div>
-    <h1>CS162 - Operating Systems and Systems Programming</h1>
+    <h1 className='courseTitle'>CS162 - Operating Systems and Systems Programming</h1>
     <div className='courseDescription'> {description} </div>
     <div className='courseText'> {cleanText} </div>
     <Graph gradeDistribution={gradeDistribution} />

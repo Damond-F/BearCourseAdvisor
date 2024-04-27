@@ -47,7 +47,7 @@ function CS182() {
 
   return (
     <div>
-    <h1>CS182 - Deep Neural Networks</h1>
+    <h1 className='courseTitle'>CS182 - Deep Neural Networks</h1>
     <div className='courseDescription'> {description} </div>
     <div className='courseText'> {cleanText} </div>
     <Graph gradeDistribution={gradeDistribution} />

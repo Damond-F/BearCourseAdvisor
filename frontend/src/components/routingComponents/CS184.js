@@ -47,7 +47,7 @@ function CS184() {
 
   return (
     <div>
-    <h1>CS184 - Foundations of Computer Graphics</h1>
+    <h1 className='courseTitle'>CS184 - Foundations of Computer Graphics</h1>
     <div className='courseDescription'> {description} </div>
     <div className='courseText'> {cleanText} </div>
     <Graph gradeDistribution={gradeDistribution} />
