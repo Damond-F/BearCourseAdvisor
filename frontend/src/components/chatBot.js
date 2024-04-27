@@ -84,6 +84,7 @@ function ChatBot() {
         <div style={{ 
             height: '620px',
             width: '900px',
+            maxHeight: '620px',
             display: 'grid',
             transform: 'scale(0.8)',
             transformOrigin: 'center top',
